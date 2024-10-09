@@ -1,4 +1,5 @@
 <template>
+        <CabecalhoVisitante />
     <div justify="center" v-if="etapaAtual === 1">
       <v-dialog v-model="dialog" persistent max-width="600px">
         <v-card>

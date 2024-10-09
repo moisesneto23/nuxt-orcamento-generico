@@ -1,7 +1,7 @@
 export default class Rotas {
    public static Visitante = {
       Login: "/login",
-      CadastroEmpresa: "/cadastro-empresa",
+      CadastroEmpresa: "/cadastro/empresa",
       Sobre: "/sobre",
       RecuperarSenha: "/recupera-senha",
 

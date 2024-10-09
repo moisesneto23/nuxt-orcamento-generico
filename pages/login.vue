@@ -2,6 +2,7 @@
 
 <template>
     <div>
+      <CabecalhoVisitante />
       <v-container>
         <v-col>
           <v-text-field

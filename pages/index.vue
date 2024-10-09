@@ -1,4 +1,5 @@
 <template>
+  <Cabecalho />
     <div>
   
       <h1>ERP Dashboard</h1>
@@ -66,7 +67,9 @@
   </template>
   
   <script setup lang="ts">
-
+// definePageMeta({
+//   middleware: 'auth'
+// });
   </script>
   
   <style scoped>
