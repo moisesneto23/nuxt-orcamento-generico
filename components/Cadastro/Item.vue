@@ -13,7 +13,7 @@
                 </v-col>
   
                 <v-col cols="12" sm="6" md="4">
-                  <v-select @change="verificaId()" v-model="selectUnidadeMedida" :items="tipoUnidadeMedida" item-text="nome" item-value="id"
+                  <v-select @change="verificaId()" v-model="selectUnidadeMedida" :items="tipoUnidadeMedida" item-title="nome" item-value="id"
                     label="Unidade de medida" persistent-hint return-object outlined></v-select>
                 </v-col>
   
@@ -53,12 +53,14 @@
   
   <script setup lang="ts">
   import { ref, computed, onMounted } from 'vue';
-  //import { useStore } from 'vuex';
+
   import ItemDto from '@/Model/Itens/ItemDto';
-import type { TipoUnidadeMedidaDto } from '~/Model/Itens/TipoUnidadeMedidaDto';
-//   import { ItensActionTypes } from '@/store/Item/actions';
-//   import { GlobalActionTypes } from '@/store/actions';
+  import type { TipoUnidadeMedidaDto } from '~/Model/Itens/TipoUnidadeMedidaDto';
+import ItemService from '~/Services/Itens/ItemService';
   
+
+  const {  adicionarItens} = storeItens();
+
   // State & actions do Vuex
   //const store = useStore();
 //   const tipos = computed(() => store.state.tipos);
@@ -75,7 +77,16 @@ import type { TipoUnidadeMedidaDto } from '~/Model/Itens/TipoUnidadeMedidaDto';
   const idSelect = ref<number | undefined>(undefined);
   const select = ref('');
   //const tipoUnidadeMedida = ref([]);
-  const tipoUnidadeMedida = ref<TipoUnidadeMedidaDto[]>([]);
+  const tipoUnidadeMedida = ref<TipoUnidadeMedidaDto[]>( [
+      { id: 1, nome: 'Unidade' },
+      { id: 2, nome: 'Peso/kg' },
+      { id: 3, nome: 'Metro' },
+      { id: 4, nome: 'Área/m2' },
+      { id: 5, nome: 'Volume/m3' },
+      { id: 6, nome: 'Chapa em m2' },
+      { id: 7, nome: 'Barra em metros' },
+      { id: 8, nome: 'Hora' },
+    ]);
   const selectUnidadeMedida = ref(<TipoUnidadeMedidaDto>{});
   
   // Funções
@@ -84,12 +95,14 @@ import type { TipoUnidadeMedidaDto } from '~/Model/Itens/TipoUnidadeMedidaDto';
     item.value.valorCompra = parseFloat(valorCompraStr.value);
     item.value.QuantidadeMinimaPorTipoUnidade = parseFloat(valorVendaStr.value);
   
-    // try {
-    //   await salvarItemAction(item.value);
-    //   dialogItem.value = false;
-    // } catch (error) {
-    //   alert("Algo deu errado nesta operação");
-    // }
+    try {
+      const service = new ItemService();
+      const dados = await service.salvarItem(item.value);
+      adicionarItens(dados);
+      dialogItem.value = false;
+    } catch (error) {
+      alert("Algo deu errado nesta operação");
+    }
   };
   
   const verificaId = () => {
