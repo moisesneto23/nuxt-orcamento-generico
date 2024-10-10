@@ -22,7 +22,7 @@
             @click:append="togglePasswordVisibility"
           ></v-text-field>
   
-          <v-btn color="#ff9800" large @click="">
+          <v-btn color="#ff9800" large @click="fazerLogin">
             <b>Fazer Login</b>
           </v-btn>
         </v-col>
@@ -38,41 +38,44 @@
   <script setup lang="ts">
   import { ref } from 'vue';
   import { useRouter } from 'vue-router';
-  //import { useAuthStore } from '@/stores/useAuthStore';
-  import Login from '@/Model/Login'; // Certifique-se de que o caminho está correto
+  import Login from '@/Model/Login'; 
+  import { EmpresaService } from '~/Services/EmpresaService';
   
   // Estados reativos
   const email = ref('');
   const senha = ref('');
   const showPassword = ref(false);
   
-  // Instâncias do Pinia e do Router
-  //const authStore = useAuthStore();
+  
+  const sericeEmpresa = new EmpresaService();
   const router = useRouter();
   
   // Métodos
   const togglePasswordVisibility = () => {
     showPassword.value = !showPassword.value;
   };
+
+  const {adicionarInformacoesEmpresa} = storeInformacoesEmpresa();
   
   const irParaRecuperarSenha = () => {
-    router.push('/visitante/recupera-senha');
+    router.push(Rotas.Visitante.RecuperarSenha);
   };
   
-//   const fazerLogin = async () => {
-//     await authStore.ativarCarregamento();
-//     const login = new Login(email.value, senha.value);
+  const fazerLogin = async () => {
+    //await authStore.ativarCarregamento();
+    const login = new Login(email.value, senha.value);
     
-//     try {
-//       await authStore.fazerLogin(login);
-//       // Redirecionamento é tratado na store
-//     } catch (error) {
-//       // Trate erros aqui, por exemplo, mostrar uma mensagem de erro ao usuário
-//       console.error('Falha no login:', error);
-//     } finally {
-//       await authStore.desativarCarregamento();
-//     }
-//   };
+    try {
+      const dado = await sericeEmpresa.obterInformacoesEmpresa(login);
+      adicionarInformacoesEmpresa(dado);
+      router.push(Rotas.Inicio)
+    } catch (error) {
+      // Trate erros aqui, por exemplo, mostrar uma mensagem de erro ao usuário
+      console.error('Falha no login:', error);
+    } finally {
+    //  await authStore.desativarCarregamento();
+    }
+  };
   </script>
   
   <style scoped>

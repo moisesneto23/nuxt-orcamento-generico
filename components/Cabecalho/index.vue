@@ -87,11 +87,6 @@
   
   <script setup lang="ts">
   import { ref, computed } from 'vue';
-  import { useRouter } from 'vue-router';
-  //import Rotas from '@/router/Rotas';
-  import EmpresaService from "@/Service/EmpresaService";
-  //import { useInjection } from 'typescript-ioc';
-  import EmpresaDto from '@/Model/Empresa/EmpresaDto';
   
   const drawer = ref(false);
   const group = ref(null);
@@ -108,7 +103,7 @@
   const nomePagina = computed(() => router.currentRoute.value.name);
   
   const sair = () => {
-    localStorage.removeItem('ocirenegotnemacro');
+    storeInformacoesEmpresa().limparInformacoesEmpresa();
     router.push(Rotas.Visitante.Login);
   };
   
