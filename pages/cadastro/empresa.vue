@@ -193,18 +193,14 @@
   </style>
   
   <script setup lang="ts">
-  import { ref, computed } from 'vue';
-  import { useRouter } from 'vue-router';
-  //import { useStore } from 'vuex';
-  //import Rotas from '@/router/Rotas';
-  import EmpresaService from "@/Service/EmpresaService";
   import  EmpresaDto  from '@/Model/Empresa/EmpresaDto';
   import { ColaboradorDto } from '@/Model/ColaboradorDto';
   import { EnderecoDto } from '@/Model/EnderecoDto';
   import Login from '@/Model/Login';
+  import { EmpresaService } from '~/Services/EmpresaService';
   
+  const service = new EmpresaService()
   const router = useRouter();
-  //const store = useStore();
   
   const empresa = ref<EmpresaDto>(new EmpresaDto());
   const colaborador = ref<ColaboradorDto>(new ColaboradorDto());
@@ -279,11 +275,11 @@
       empresa.value.colaboradores.push(colaborador.value);
       empresa.value.enderecos.push(endereco.value);
   
-    //   await EmpresaService.cadastrarEmpresa(empresa.value)
-    //     .then(async () => {
-    //       await EmpresaService.obterInformacoesEmpresa(new Login(colaborador.value.email, colaborador.value.senha));
-    //       router.push('/');
-    //     });
+      await service.cadastrarEmpresa(empresa.value)
+        .then(async () => {
+          await service.obterInformacoesEmpresa(new Login(colaborador.value.email, colaborador.value.senha));
+          router.push(Rotas.Inicio);
+        });
       alert('Cadastro realizado com sucesso!');
     }
   };

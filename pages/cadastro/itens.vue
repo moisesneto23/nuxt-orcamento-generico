@@ -6,25 +6,19 @@
   </template>
   
   <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
- // import { useStore } from 'vuex';
+import ItemService from '~/Services/Itens/ItemService';
 
-  
-  // Store namespaces e actions
-//   const store = useStore();
-//   const obterTodosItens = () => store.dispatch('Item/OBTER_ITENS');
-//   const ativarCarregamento = () => store.dispatch('ATIVAR_CARREGAMENTO');
-//   const desativarCarregamento = () => store.dispatch('DESATIVAR_CARREGAMENTO');
-  
-  // Lógica de carregamento e obtenção de itens
-//   onMounted(async () => {
-//     try {
-//       await ativarCarregamento();
-//       await obterTodosItens();
-//     } finally {
-//       await desativarCarregamento();
-//     }
-//   });
+  const { adicionarItens } = storeItens();
+
+  onMounted(async () => {
+    // try {
+      const service = new ItemService();
+      const dados = await service.obterTodosItens();
+      adicionarItens(dados);
+    // } finally {
+    //  // await desativarCarregamento();
+    // }
+  });
   </script>
   
   <style scoped>

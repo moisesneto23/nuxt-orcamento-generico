@@ -68,6 +68,10 @@
     try {
       const dado = await sericeEmpresa.obterInformacoesEmpresa(login);
       adicionarInformacoesEmpresa(dado);
+      localStorage.setItem("ocirenegotnemacro", dado.token);
+      const app = useNuxtApp();
+      app.$token.setToken(dado.token);
+      console.log(dado.token)
       router.push(Rotas.Inicio)
     } catch (error) {
       // Trate erros aqui, por exemplo, mostrar uma mensagem de erro ao usuário

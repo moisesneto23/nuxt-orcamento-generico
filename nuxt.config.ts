@@ -5,5 +5,8 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', 'vuetify-nuxt-module','@pinia/nuxt'],
   pinia: {
     storesDirs: ['./store/**']
+  },
+  experimental: {
+    cookieStore: true
   }
 })

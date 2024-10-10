@@ -103,8 +103,8 @@
   <script setup lang="ts">
   import { ref, computed } from 'vue'
   //import { useStore } from 'vuex'
-  import EmailService from '@/Service/EmailService'
-  import { RecuperacaoSenhaRequest } from '@/Service/Request/RecuperacaoSenhaRequest'
+  import EmailService from '~/Services/EmailService'
+  import { RecuperacaoSenhaRequest } from '~/Services/Request/RecuperacaoSenhaRequest'
   //import Rotas from '@/router/Rotas'
   
 //   const store = useStore()
@@ -155,7 +155,7 @@
     try {
      // await emailService.trocaDeSenha(request)
       alert('Sua senha foi alterada com sucesso!')
-      router.push(Rotas.Visitante.Login)
+     // router.push(Rotas.Visitante.Login)
     } catch {
       alert('Erro ao alterar senha')
     } finally {
@@ -164,7 +164,7 @@
   }
   
   const cancelPasswordReset = () => {
-    router.push(Rotas.Visitante.Login)
+    //router.push(Rotas.Visitante.Login)
   }
   
   const getErrorMessage = (fieldName: string) => {

@@ -1,6 +1,7 @@
-import  EmpresaModel  from '@/Model/Empresa/Empresa';
+import type EmpresaDto from "./Empresa/EmpresaDto";
+
 export default class InformacoesEmpresa {
-    public empresaModel!: EmpresaModel;
+    public empresaDto!: EmpresaDto;
     public token!: string;
     public permicoes!: string[] ;
 }

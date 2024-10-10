@@ -5,7 +5,10 @@ export class AppHttpFetch {
   private token: string | null;
 
   constructor() {
-    this.token = process.client ? localStorage.getItem('ocirenegotnemacro') : null;
+    const { $token } = useNuxtApp();
+    const tokenc = $token.getToken();
+    this.token = tokenc || null;
+    console.log(tokenc);
   }
 
   private async handleRequest<T = any>(method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE', url: string, data?: any): Promise<T> {
@@ -26,7 +29,7 @@ export class AppHttpFetch {
       if (error.response && (error.response.status === 404 || error.response.status === 401)) {
         alert(error.response._data.detail);
         const router = useRouter();
-        router.push(Rotas.Visitante.Login);
+        //router.push(Rotas.Visitante.Login);
       }
 
       if (error.response && error.response.status === 400) {

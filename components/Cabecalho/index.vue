@@ -104,7 +104,7 @@
   
   const sair = () => {
     storeInformacoesEmpresa().limparInformacoesEmpresa();
-    router.push(Rotas.Visitante.Login);
+    //router.push(Rotas.Visitante.Login);
   };
   
   const reloadPage = () => {

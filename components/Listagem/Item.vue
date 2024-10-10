@@ -1,8 +1,8 @@
 <template>
     <v-expansion-panels focusable>
       <v-expansion-panel
-        v-for="(item, i) in obterItensUnitarios"
-        :key="i"
+        v-for="item in itens"
+        
         class="mb-2"
       >
         <v-expansion-panel-header class="my-n1">
@@ -36,42 +36,16 @@
     </v-expansion-panels>
   </template>
   <script setup lang="ts">
-  import { computed } from 'vue';
-  //import { useStore } from 'vuex';
-  //import EdicaoItem from '@/components/Itens/Item/EdicaoItem.vue'; 
-  import ItemDto from '@/Model/Itens/ItemDto';
- // import { StoreNamespaces } from '@/store';
-  //import { ItensActionTypes } from '@/store/Item/actions';
+import ItemService from '~/Services/Itens/ItemService';
+
+ const serviceItem = new ItemService();
+ 
+  const { itens , removerItem} = storeItens();
   
-  // Acessando a store do Vuex
-  //const store = useStore();
-  
-  // Função para remover item
-  const removerItem = (id: number) => {
-    //store.dispatch(StoreNamespaces.ITEM + '/' + ItensActionTypes.REMOVER_ITEM, id);
-  };
-  
-  // Computed para obter os itens
-  const obterItensUnitarios = 
-    //return store.state[StoreNamespaces.ITEM].itens;
-    [
-        {
-            id : 0,
-            nome: 'hsdfj',
-            valorVenda: 45,
-            valorCompra: 45,
-             empresa: null,
-   empresaId: 4,
-    tipoUnidadeMedidaId: 4,
-     nomeUnidadeMedida: 'string',
-    QuantidadeMinimaPorTipoUnidade: 4
-        }
-    ]
-  ;
-  
-  // Função para excluir item
   const excluirItem = async (id: number) => {
-    await removerItem(id);
+    serviceItem.delete(id).then(()=>{
+      removerItem(id);
+    })
   };
   </script>
   
