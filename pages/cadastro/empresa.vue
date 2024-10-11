@@ -1,5 +1,4 @@
 <template>
-  <cabecalho-visitante />
     <v-container>
       <v-form ref="form">
         <v-row>
