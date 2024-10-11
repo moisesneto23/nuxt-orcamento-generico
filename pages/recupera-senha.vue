@@ -103,8 +103,8 @@
   <script setup lang="ts">
   import { ref, computed } from 'vue'
   //import { useStore } from 'vuex'
-  import EmailService from '~/Services/EmailService'
-  import { RecuperacaoSenhaRequest } from '~/Services/Request/RecuperacaoSenhaRequest'
+  import EmailService from '~/Service/EmailService'
+  import { RecuperacaoSenhaRequest } from '~/Service/Request/RecuperacaoSenhaRequest'
   //import Rotas from '@/router/Rotas'
   
 //   const store = useStore()

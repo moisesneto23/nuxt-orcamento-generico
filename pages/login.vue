@@ -39,7 +39,7 @@
   import { ref } from 'vue';
   import { useRouter } from 'vue-router';
   import Login from '@/Model/Login'; 
-  import { EmpresaService } from '~/Services/EmpresaService';
+  import { EmpresaService } from '~/Service/EmpresaService';
   
   // Estados reativos
   const email = ref('');

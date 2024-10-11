@@ -22,7 +22,7 @@
   </template>
   
   <script setup lang="ts">
- import ItemService from '~/Services/Itens/ItemService';
+ import ItemService from '~/Service/Itens/ItemService';
  const httpSSr = new ItemService();
  const itens = await httpSSr.obterTodosItenSSr();
 

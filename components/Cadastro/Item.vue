@@ -56,7 +56,7 @@
 
   import ItemDto from '@/Model/Itens/ItemDto';
   import type { TipoUnidadeMedidaDto } from '~/Model/Itens/TipoUnidadeMedidaDto';
-import ItemService from '~/Services/Itens/ItemService';
+import ItemService from '~/Service/Itens/ItemService';
   
 
   const {  adicionarItens} = storeItens();
@@ -76,7 +76,7 @@ import ItemService from '~/Services/Itens/ItemService';
   const valorCompraStr = ref('');
   const idSelect = ref<number | undefined>(undefined);
   const select = ref('');
-  //const tipoUnidadeMedida = ref([]);
+  
   const tipoUnidadeMedida = ref<TipoUnidadeMedidaDto[]>( [
       { id: 1, nome: 'Unidade' },
       { id: 2, nome: 'Peso/kg' },

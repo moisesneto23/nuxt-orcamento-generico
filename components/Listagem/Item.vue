@@ -36,17 +36,15 @@
     </v-expansion-panels>
   </template>
   <script setup lang="ts">
-import ItemService from '~/Services/Itens/ItemService';
 
- const serviceItem = new ItemService();
  
   const itemStore = storeItens();
   const { itens } = storeToRefs(itemStore);
 
   const excluirItem = async (id: number) => {
-    serviceItem.delete(id).then(()=>{
-      //removerItem(id);
-    })
+   
+      itemStore.removerItem(id);
+
   };
   </script>
   

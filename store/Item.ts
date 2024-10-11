@@ -1,4 +1,5 @@
 import ItemDto from "~/Model/Itens/ItemDto";
+import ItemService from "~/Service/Itens/ItemService";
 
 export const storeItens = defineStore('itens', () => {
     
@@ -9,7 +10,10 @@ export const storeItens = defineStore('itens', () => {
     };
 
     const removerItem = (id: number) => {
-        itens.value = itens.value.filter((i)=> i.id !== id );
+        const serviceItem = new ItemService();
+        serviceItem.delete(id).then(()=>{
+            itens.value = itens.value.filter((i)=> i.id !== id );
+        }); 
     }
 
     return {itens, adicionarItens, removerItem };

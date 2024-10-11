@@ -196,7 +196,7 @@
   import { ColaboradorDto } from '@/Model/ColaboradorDto';
   import { EnderecoDto } from '@/Model/EnderecoDto';
   import Login from '@/Model/Login';
-  import { EmpresaService } from '~/Services/EmpresaService';
+  import { EmpresaService } from '~/Service/EmpresaService';
   
   const service = new EmpresaService()
   const router = useRouter();
