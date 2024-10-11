@@ -1,5 +1,5 @@
 <template>
-  <Cabecalho />
+  <!-- <Cabecalho /> -->
     <div>
   
       <h1>ERP Dashboard</h1>
