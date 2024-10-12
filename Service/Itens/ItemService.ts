@@ -16,39 +16,26 @@ export default class ItemService {
  
 
     public async obterTodosItens(): Promise<ItemDto[]> {
-       // store.dispatch('ATIVAR_CARREGAMENTO');
         const result = await this.$http.get(`Item`);
-        //store.dispatch('DESATIVAR_CARREGAMENTO');
-        console.log(result);
         return result;
     }
 
     public async obterTodosItenSSr(): Promise<ItemDto[]> {
        const result = await this.$httpUseFetch.get(`Item`);
-       console.log(result);
        return result;
    }
 
     public async salvarItem(Item: ItemDto): Promise<any> {
-       // store.dispatch('ATIVAR_CARREGAMENTO');
-
         const result = await this.$http.post(`Item`, Item);
-       // store.dispatch('DESATIVAR_CARREGAMENTO');
+       return result;
     }
 
-    public async editarItem(Item: ItemDto): Promise<ItemDto> {
-        //store.dispatch('ATIVAR_CARREGAMENTO');
-        const result = await this.$http.patch(`Item`, Item);
-       // store.dispatch('DESATIVAR_CARREGAMENTO');
-        return result.data;
-        
+    public async editarItem(Item: ItemDto): Promise<void> {
+         await this.$http.patch(`Item`, Item);
     }
+
     public async delete(id: any) : Promise<any>{
-       // store.dispatch('ATIVAR_CARREGAMENTO');
         const url =`Item/${id}`;
-        await this.$http.delete(url).catch(() => {
-            alert("Algo deu errado nesta operação")
-          });
-        //store.dispatch('DESATIVAR_CARREGAMENTO');
+        await this.$http.delete(url);
     }
 }

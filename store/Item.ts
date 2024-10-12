@@ -1,3 +1,4 @@
+import { EdicaoItem } from './../.nuxt/components.d';
 import ItemDto from "~/Model/Itens/ItemDto";
 import ItemService from "~/Service/Itens/ItemService";
 
@@ -16,5 +17,17 @@ export const storeItens = defineStore('itens', () => {
         }); 
     }
 
-    return {itens, adicionarItens, removerItem };
+    const editarItem = (dado: ItemDto) =>{
+        const serviceItem = new ItemService();
+        serviceItem.editarItem(dado).then(()=>{
+            
+            itens.value = itens.value.filter((i)=> i.id !== dado.id );
+            itens.value.push(dado);
+        }); 
+    }
+
+    
+    
+
+    return {itens, adicionarItens, removerItem, editarItem };
 });
