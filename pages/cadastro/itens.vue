@@ -1,8 +1,8 @@
 <template>
     <div id="cadastroOrcamento"> 
-      
-      <listagem-item></listagem-item>
+      <br><br><br><br><br>
       <cadastro-item class="mb-8"></cadastro-item>
+      <listagem-item></listagem-item>
     </div>
 
     <!-- <div> 

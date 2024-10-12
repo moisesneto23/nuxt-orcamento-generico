@@ -25,61 +25,61 @@
         style="padding-top: 60px;"
       >
         <v-list>
-          <v-list-item-group v-model="group">
+          <v-list-group v-model="group">
             <v-list-item :to="Inicio">
-              <v-list-item-icon>
+              <v-icon>
                 <v-icon color="primary">mdi-home</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
+              </v-icon>
+              <v-list-item-title>
                 <v-list-item-title class="text-primary">Início</v-list-item-title>
-              </v-list-item-content>
+              </v-list-item-title>
             </v-list-item>
   
             <v-list-item :to="RealizaOrcamento">
-              <v-list-item-icon>
+              <v-icon>
                 <v-icon color="primary">mdi-calculator</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
+              </v-icon>
+              <v-list-item-title>
                 <v-list-item-title class="text-primary">Orçamento</v-list-item-title>
-              </v-list-item-content>
+              </v-list-item-title>
             </v-list-item>
   
             <v-list-item :to="Pedidos">
-              <v-list-item-icon>
+              <v-icon>
                 <v-icon color="primary">mdi-shape-plus</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
+              </v-icon>
+              <v-list-item-title>
                 <v-list-item-title class="text-primary">Pedidos</v-list-item-title>
-              </v-list-item-content>
+              </v-list-item-title>
             </v-list-item>
   
             <v-list-item :to="cadastroProdutos">
-              <v-list-item-icon>
+              <v-icon>
                 <v-icon color="primary">mdi-shape-plus</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
+              </v-icon>
+              <v-list-item-title>
                 <v-list-item-title class="text-primary">Cadastro Produtos</v-list-item-title>
-              </v-list-item-content>
+              </v-list-item-title>
             </v-list-item>
   
             <v-list-item :to="cadastroItens">
-              <v-list-item-icon>
+              <v-icon>
                 <v-icon color="primary">mdi-shape-plus</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
+              </v-icon>
+              <v-list-item-title>
                 <v-list-item-title class="text-primary">Cadastro Itens</v-list-item-title>
-              </v-list-item-content>
+              </v-list-item-title>
             </v-list-item>
   
             <v-list-item :to="Ajuda">
-              <v-list-item-icon>
+              <v-icon>
                 <v-icon color="primary">mdi-help</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
+              </v-icon>
+              <v-list-item-title>
                 <v-list-item-title class="text-primary">Ajuda</v-list-item-title>
-              </v-list-item-content>
+              </v-list-item-title>
             </v-list-item>
-          </v-list-item-group>
+          </v-list-group>
         </v-list>
       </v-navigation-drawer>
     </div>

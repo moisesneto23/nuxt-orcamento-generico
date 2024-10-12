@@ -43,12 +43,11 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-  
-      <v-btn @click="dialogItem = true" color="purple" :rounded="true">
+      <v-btn @click="dialogItem = true" color="purple" class="mt-64" :rounded="true">
         <v-icon>mdi-shape-square-plus</v-icon>
         Criar Item
       </v-btn>
-    </div>
+</div>
   </template>
   
   <script setup lang="ts">
@@ -61,15 +60,7 @@ import ItemService from '~/Service/Itens/ItemService';
 
   const {  adicionarItens} = storeItens();
 
-  // State & actions do Vuex
-  //const store = useStore();
-//   const tipos = computed(() => store.state.tipos);
-//   const salvarItemAction = (item: ItemDto) => store.dispatch(ItensActionTypes.SALVAR_ITEM, item);
-//   const ativarCarregamento = () => store.dispatch(GlobalActionTypes.ATIVAR_CARREGAMENTO);
-//   const desativarCarregamento = () => store.dispatch(GlobalActionTypes.DESATIVAR_CARREGAMENTO);
-  
-  // Data
-  const dialogItem = ref(false);
+  const dialogItem = ref(true);
   const item = ref(new ItemDto());
   const comprimentoBarraStr = ref('1');
   const valorVendaStr = ref('0');
