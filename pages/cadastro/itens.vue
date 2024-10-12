@@ -1,30 +1,23 @@
 <template>
     <div id="cadastroOrcamento"> 
-      <!-- <cabecalho class="py-64"></cabecalho> -->
-      <cadastro-item class="mb-8"></cadastro-item>
+      
       <listagem-item></listagem-item>
+      <cadastro-item class="mb-8"></cadastro-item>
     </div>
 
-    <div>
-      <h1>Dados dos Módulos Vindo do servidor</h1>
-      <div >
-        <ul>
-          <li v-for="module in data" :key="module.id">aaaa {{ module }}</li>
-        </ul>
-      </div>
-     <div>
+    <!-- <div> 
       <h2>itens por httpSSr</h2>
       <ul>
-          <li v-for="itemm in itens" :key="itemm.id">aaaa {{ itemm }}</li>
+          <li v-for="itemm in itens" :key="itemm.id">aaaa</li>
         </ul>
      </div>
-    </div>
+    </div> -->
   </template>
   
   <script setup lang="ts">
  import ItemService from '~/Service/Itens/ItemService';
- const httpSSr = new ItemService();
- const itens = await httpSSr.obterTodosItenSSr();
+//  const httpSSr = new ItemService();
+//  const itens = await httpSSr.obterTodosItenSSr();
 
 
   onMounted(async () => { 
