@@ -104,7 +104,9 @@
   
   const sair = () => {
     storeInformacoesEmpresa().limparInformacoesEmpresa();
-    //router.push(Rotas.Visitante.Login);
+    const { $token } = useNuxtApp();
+    const tokenc = $token.removeToken();
+    navigateTo(Rotas.Visitante.Login);
   };
   
   const reloadPage = () => {

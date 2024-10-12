@@ -40,6 +40,10 @@
   
   <script setup lang="ts">
   import { ref } from 'vue'
+
+  definePageMeta({
+  middleware: 'auth'
+});
 //   import CadastroCategoriaProduto from '@/components/Produtos/CategoriaProduto/CadastroCategoriaProduto.vue'
 //   import ListagemCategoriaProduto from '@/components/Produtos/CategoriaProduto/ListagemCategoriaProduto.vue'
 //   import ListagemProduto from '@/components/Produtos/Produto/ListagemProduto.vue'

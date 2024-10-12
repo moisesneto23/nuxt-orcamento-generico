@@ -1,7 +1,9 @@
 // middleware/auth.ts
 
 export default defineNuxtRouteMiddleware((to, from) => {
-  const isAuthenticated = estaAutenticado();
+
+  const { $token } = useNuxtApp();
+    const isAuthenticated = $token.getToken();
 
   if (
     to.path === "/sobre" ||
@@ -9,18 +11,15 @@ export default defineNuxtRouteMiddleware((to, from) => {
     to.path === "/login"
   ) {
     console.log("JWT apagado");
-    localStorage.removeItem("ocirenegotnemacro");
-    localStorage.removeItem("businessId");
+    $token.removeToken();
+    navigateTo(Rotas.Visitante.Login);
     return;
   }
 
-  // if (!isAuthenticated) {
-  //   localStorage.removeItem("ocirenegotnemacro");
-  //   return navigateTo('/login');
-  // }
+  if (!isAuthenticated) {
+    console.log("JWT apagado");
+    $token.removeToken();
+    return navigateTo('/login');
+  }
 });
 
-function estaAutenticado(): boolean {
-  const autenticacao = localStorage.getItem("ocirenegotnemacro");
-  return autenticacao !== null;
-}
