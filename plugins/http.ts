@@ -17,7 +17,7 @@ export class AppHttpFetch {
         method,
         body: JSON.stringify(data),
         headers,
-        baseURL: 'https://localhost:7187/',
+        baseURL: 'http://localhost:7187/',
       });
 
       return response;
@@ -85,7 +85,7 @@ export class AppHttpUseFetch {
     const now = new Date();
  
     try {
-          const { data } = await useFetch(() =>  'https://localhost:7187/'+ url,{
+          const { data } = await useFetch(() =>  'http://localhost:7187/'+ url,{
           key: now.getMinutes().toString(),
           method:verbo,
           body: JSON.stringify(corpo),
