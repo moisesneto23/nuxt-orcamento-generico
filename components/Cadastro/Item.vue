@@ -60,7 +60,7 @@ import ItemService from '~/Service/Itens/ItemService';
 
   const {  adicionarItens} = storeItens();
 
-  const dialogItem = ref(true);
+  const dialogItem = ref(false);
   const item = ref(new ItemDto());
   const comprimentoBarraStr = ref('1');
   const valorVendaStr = ref('0');

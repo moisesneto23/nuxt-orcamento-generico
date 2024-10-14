@@ -70,6 +70,12 @@
 definePageMeta({
   middleware: 'auth'
 });
+
+// onMounted(async () => { 
+  //     const service = new ItemService();
+  //     const dados = await service.obterTodosItens();
+  //     storeItens().adicionarItens(dados);
+  // });
   </script>
   
   <style scoped>

@@ -1,6 +1,6 @@
 <template>
-    <v-expansion-panels focusable>
-      <v-expansion-panel
+    <v-expansion-panels focusable >
+      <v-expansion-panel 
         v-for="item in itens" 
         :key="item.id"
         class="mb-2"
@@ -36,10 +36,22 @@
     </v-expansion-panels>
   </template>
   <script setup lang="ts">
+import ItemService from '~/Service/Itens/ItemService';
 
+ const httpSSr = new ItemService();
+ const itensSSr = await httpSSr.obterTodosItenSSr();
  
+ //storeItens().adicionarItens(itensSSr);
+  onMounted(async () => { 
+     // const service = new ItemService();
+     // const dados = await service.obterTodosItens();
+     const store = storeItens()
+     store.adicionarItens(itensSSr);
+  });
+
   const itemStore = storeItens();
   const { itens } = storeToRefs(itemStore);
+
 
   const excluirItem = async (id: number) => {
       itemStore.removerItem(id);

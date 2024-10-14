@@ -24,11 +24,11 @@
 //  const itens = await httpSSr.obterTodosItenSSr();
 
 
-  onMounted(async () => { 
-      const service = new ItemService();
-      const dados = await service.obterTodosItens();
-      storeItens().adicionarItens(dados);
-  });
+  // onMounted(async () => { 
+  //     const service = new ItemService();
+  //     const dados = await service.obterTodosItens();
+  //     storeItens().adicionarItens(dados);
+  // });
   
   </script>
   
