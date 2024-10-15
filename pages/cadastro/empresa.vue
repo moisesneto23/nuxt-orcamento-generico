@@ -198,9 +198,7 @@
   import Login from '@/Model/Login';
   import { EmpresaService } from '~/Service/EmpresaService';
   
-  const service = new EmpresaService()
-  const router = useRouter();
-  
+  const service = new EmpresaService();
   const empresa = ref<EmpresaDto>(new EmpresaDto());
   const colaborador = ref<ColaboradorDto>(new ColaboradorDto());
   const endereco = ref<EnderecoDto>(new EnderecoDto());
@@ -277,7 +275,7 @@
       await service.cadastrarEmpresa(empresa.value)
         .then(async () => {
           await service.obterInformacoesEmpresa(new Login(colaborador.value.email, colaborador.value.senha));
-          router.push(Rotas.Inicio);
+          navigateTo(Rotas.Inicio);
         });
       alert('Cadastro realizado com sucesso!');
     }

@@ -1,5 +1,4 @@
 <template>
-        <CabecalhoVisitante />
     <div justify="center" v-if="etapaAtual === 1">
       <v-dialog v-model="dialog" persistent max-width="600px">
         <v-card>
@@ -105,10 +104,8 @@
   //import { useStore } from 'vuex'
   import EmailService from '~/Service/EmailService'
   import { RecuperacaoSenhaRequest } from '~/Service/Request/RecuperacaoSenhaRequest'
-  //import Rotas from '@/router/Rotas'
   
-//   const store = useStore()
-//   const emailService = new EmailService()
+   const emailService = new EmailService()
   
   const dialog = ref(false)
   const email = ref('')
@@ -119,13 +116,13 @@
   const confirmPassword = ref('')
   const show1 = ref(false)
   const show2 = ref(false)
-  const router = useRouter();
+
   const enviarEmail = async () => {
    // store.dispatch('ATIVAR_CARREGAMENTO')
   
     try {
-      //const dado = await emailService.pedidoCodigoTrocaSenha(email.value)
-     // mensagemAlerta.value = dado
+      const dado = await emailService.pedidoCodigoTrocaSenha(email.value)
+      mensagemAlerta.value = dado
       alert(mensagemAlerta.value)
   
       if (mensagemAlerta.value !== 'Email não cadastrado') {
@@ -149,13 +146,10 @@
     request.email = email.value
     request.codigoConfirmacao = recoveryCode.value
     request.novaSenha = newPassword.value
-  
-   // store.dispatch('ATIVAR_CARREGAMENTO')
-  
     try {
-     // await emailService.trocaDeSenha(request)
+      await emailService.trocaDeSenha(request)
       alert('Sua senha foi alterada com sucesso!')
-     // router.push(Rotas.Visitante.Login)
+      navigateTo(Rotas.Visitante.Login)
     } catch {
       alert('Erro ao alterar senha')
     } finally {
@@ -164,7 +158,7 @@
   }
   
   const cancelPasswordReset = () => {
-    //router.push(Rotas.Visitante.Login)
+    navigateTo(Rotas.Visitante.Login)
   }
   
   const getErrorMessage = (fieldName: string) => {

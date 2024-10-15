@@ -1,11 +1,14 @@
-import { AppHttpAxios } from '@/axios/AppHttpAxios';
-import { Inject } from 'typescript-ioc';
+
+import { AppHttpFetch } from '~/plugins/http';
 import { RecuperacaoSenhaRequest } from './Request/RecuperacaoSenhaRequest';
 
 export default class EmailService  {
     
-    @Inject
-    private $http!: AppHttpAxios;
+        private $http: AppHttpFetch;
+        
+      constructor( ) {
+        this.$http =  new AppHttpFetch(); 
+      }
 
     public async pedidoCodigoTrocaSenha(email :string): Promise<string> {
         const request = {

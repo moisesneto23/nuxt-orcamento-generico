@@ -90,7 +90,6 @@
   
   const drawer = ref(false);
   const group = ref(null);
-  const router = useRouter();
   
   //const empresaService = useInjection(EmpresaService);
   const cadastroItens = Rotas.Cadastros.CadastroItens;

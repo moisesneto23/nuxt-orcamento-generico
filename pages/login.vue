@@ -34,7 +34,6 @@
   
   <script setup lang="ts">
   import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
   import Login from '@/Model/Login'; 
   import { EmpresaService } from '~/Service/EmpresaService';
   
@@ -45,7 +44,6 @@
   
   
   const sericeEmpresa = new EmpresaService();
-  const router = useRouter();
   
   // Métodos
   const togglePasswordVisibility = () => {
@@ -55,7 +53,7 @@
   const {adicionarInformacoesEmpresa} = storeInformacoesEmpresa();
   
   const irParaRecuperarSenha = () => {
-    router.push(Rotas.Visitante.RecuperarSenha);
+    navigateTo(Rotas.Visitante.RecuperarSenha);
   };
   
   const fazerLogin = async () => {
@@ -68,7 +66,7 @@
       localStorage.setItem("ocirenegotnemacro", dado.token);
       const app = useNuxtApp();
       app.$token.setToken(dado.token);
-      router.push(Rotas.Inicio)
+      navigateTo(Rotas.Inicio)
     } catch (error) {
       console.error('Falha no login:', error);
     } finally {
