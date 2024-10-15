@@ -25,12 +25,13 @@
               <h3 class="text-center">Editar</h3>
             </v-col>
             <v-col cols="6">
-              <v-btn color="error" >
-                <v-icon x-large @click="excluirItem(item.id)">mdi-trash-can-outline</v-icon>
+              <v-btn color="error" @click="excluirItem(item.id)">
+                <v-icon x-large >mdi-trash-can-outline</v-icon>
               </v-btn>
               <h3 class="text-center">Excluir</h3>
             </v-col>
           </v-row>
+          
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -40,14 +41,8 @@ import ItemService from '~/Service/Itens/ItemService';
 
  const httpSSr = new ItemService();
  const itensSSr = await httpSSr.obterTodosItenSSr();
- 
- //storeItens().adicionarItens(itensSSr);
-  onMounted(async () => { 
-     // const service = new ItemService();
-     // const dados = await service.obterTodosItens();
-     const store = storeItens()
-     store.adicionarItens(itensSSr);
-  });
+ const store = storeItens()
+ store.adicionarItens(itensSSr);
 
   const itemStore = storeItens();
   const { itens } = storeToRefs(itemStore);

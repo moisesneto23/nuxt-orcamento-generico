@@ -1,8 +1,5 @@
-<!-- pages/visitante/Login.vue -->
-
 <template>
     <div>
-      <!-- <CabecalhoVisitante /> -->
       <v-container>
         <v-col>
           <v-text-field
@@ -71,10 +68,8 @@
       localStorage.setItem("ocirenegotnemacro", dado.token);
       const app = useNuxtApp();
       app.$token.setToken(dado.token);
-      console.log('Token armazenado:', app.$token.getToken());
       router.push(Rotas.Inicio)
     } catch (error) {
-      // Trate erros aqui, por exemplo, mostrar uma mensagem de erro ao usuário
       console.error('Falha no login:', error);
     } finally {
     //  await authStore.desativarCarregamento();

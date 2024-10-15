@@ -1,5 +1,4 @@
 <template>
-  <!-- <Cabecalho /> -->
     <div>
   
       <h1>ERP Dashboard</h1>
@@ -62,7 +61,7 @@
         <p>Links para recursos de ajuda, manuais ou tutoriais.</p>
         <p>Informações de contato para suporte técnico.</p>
       </section>
-  
+      <a href="http://localhost:3000/cadastro/itens">va ate mim jkjsdkashd</a>
     </div>
   </template>
   

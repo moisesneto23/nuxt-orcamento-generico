@@ -1,16 +1,15 @@
 
 import  ItemDto from '~/Model/Itens/ItemDto';
 
-import type { AppHttpFetch, AppHttpUseFetch } from '~/plugins/http';
+import { AppHttpFetch, AppHttpUseFetch } from '~/plugins/http';
 
 export default class ItemService {
     private $http: AppHttpFetch;
     private $httpUseFetch: AppHttpUseFetch;
 
   constructor( ) {
-    const app = useNuxtApp();
-    this.$http = app.$http; 
-    this.$httpUseFetch = app.$httpUseFetch;
+    this.$http =  new AppHttpFetch(); 
+    this.$httpUseFetch = new AppHttpUseFetch();
   }
 
  

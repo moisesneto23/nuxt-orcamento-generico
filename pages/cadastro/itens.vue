@@ -4,14 +4,6 @@
       <cadastro-item class="mb-8"></cadastro-item>
       <listagem-item></listagem-item>
     </div>
-
-    <!-- <div> 
-      <h2>itens por httpSSr</h2>
-      <ul>
-          <li v-for="itemm in itens" :key="itemm.id">aaaa</li>
-        </ul>
-     </div>
-    </div> -->
   </template>
   
   <script setup lang="ts">

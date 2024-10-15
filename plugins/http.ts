@@ -68,7 +68,7 @@ export default defineNuxtPlugin(() => {
 
 /*-----------------   useFetch --------------------------------------*/
 export class AppHttpUseFetch {
-  private token: string | null;
+  private token = useCookie('auth_token').value;
 
   constructor() {
     const { $token } = useNuxtApp();
