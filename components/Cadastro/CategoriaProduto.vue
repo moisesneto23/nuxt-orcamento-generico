@@ -1,0 +1,3 @@
+<template>
+    algo
+</template>

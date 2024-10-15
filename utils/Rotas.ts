@@ -11,8 +11,8 @@ export default class Rotas {
       CadastroOrcamento: "/cadastro/orcamento",
       CadastroItens: '/cadastro/itens',
       CadastroProdutos: "/cadastro/produtos",
-      RealizaOrcamento: '/cadastro/orcamento',
-      Pedidos: '/Pedidos'
+      // RealizaOrcamento: '/cadastro/orcamento',
+      // Pedidos: '/Pedidos'
    };
-   public static Ajuda = '/ajuda';
+   //public static Ajuda = '/ajuda';
 }
