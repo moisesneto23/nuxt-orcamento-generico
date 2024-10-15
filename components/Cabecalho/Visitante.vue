@@ -1,23 +1,19 @@
 <template>
   <nav>
-    <span>
-      <v-btn  class="mx-4 my-4">
+      <div  class="mx-4 my-4">
         <router-link :to="loginRoute">
           <v-btn color="purple" >
             <h2>Login</h2>
           </v-btn>
         </router-link>
-      </v-btn>
-    </span>
-    <span>
-      <v-btn class="mx-4 my-2">
+      </div>
+      <div class="mx-4 my-2">
         <router-link :to="cadastroEmpresaRoute">
           <v-btn color="purple" >
             <h2>Cadastro Empresa</h2>
           </v-btn>
         </router-link>
-      </v-btn>
-    </span>
+      </div>
     <!--
     <span>
       <v-btn text>
