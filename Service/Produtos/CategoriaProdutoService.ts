@@ -1,25 +1,36 @@
 
 import {CategoriaProdutoDto} from '@/Model/Produtos/CategoriaProdutoDto';
-import { CategoriaProdutoRepository } from '@/Repository/Produtos/CategoriaProdutoRepository';
-import { Inject } from 'typescript-ioc';
+import { AppHttpFetch, AppHttpUseFetch } from '~/plugins/http';
+import { storeGlobal } from '~/store/Global';
+
 
 export default class CategoriaProdutoService {
     
-    @Inject
-    private _categoriaRepository!: CategoriaProdutoRepository;
+    private $http: AppHttpFetch;
+    private $httpUseFetch: AppHttpUseFetch;
+    private carregamento ;
+  constructor( ) {
+    this.$http =  new AppHttpFetch(); 
+    this.$httpUseFetch = new AppHttpUseFetch();
+    this.carregamento = storeGlobal();
+  }
 
-    public async obterTodasCategoriasProduto(): Promise<CategoriaProdutoDto[]> {
-        return await this._categoriaRepository.obterTodasCategoriasProduto();
-    }
+  public async obterTodasCategoriasProduto(): Promise<CategoriaProdutoDto[]> {
+    const result = await this.$httpUseFetch.get(`CategoriaProduto/`);
+    return result;
+}
 
-    public async salvarCategoriaProduto(Produto:CategoriaProdutoDto): Promise<any> {
-         await this._categoriaRepository.salvarCategoriaProduto(Produto);
-    }
+public async salvarCategoriaProduto(categoria: CategoriaProdutoDto): Promise<any> {
+    const result = await this.$http.post('CategoriaProduto', categoria);
+    return result;
+}
 
-    public async editarCategoriaProduto(Produto:CategoriaProdutoDto): Promise<CategoriaProdutoDto> {
-       return await this._categoriaRepository.editarCategoriaProduto(Produto);
-    }
-    public async delete(id: number): Promise<any>{
-        await this._categoriaRepository.delete(id);
-    }
+public async editarCategoriaProduto(categoria: CategoriaProdutoDto): Promise<CategoriaProdutoDto> {
+    const result = await this.$http.patch('CategoriaProduto', categoria);
+    return result;
+}
+public async delete(id: any) : Promise<any>{
+    const url =`CategoriaProduto/${id}`;
+    await this.$http.delete(url);
+}
 };

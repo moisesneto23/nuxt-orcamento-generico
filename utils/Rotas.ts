@@ -8,11 +8,14 @@ export default class Rotas {
    };
    public static Inicio = '/';
    public static Cadastros = {
-      CadastroOrcamento: "/cadastro/orcamento",
+      
       CadastroItens: '/cadastro/itens',
-      CadastroProdutos: "/cadastro/produtos",
-      // RealizaOrcamento: '/cadastro/orcamento',
-      // Pedidos: '/Pedidos'
+      RealizaOrcamento: '/cadastro/orcamento',
+      Pedidos: '/Pedidos'
    };
-   //public static Ajuda = '/ajuda';
+   public static Gestao = {
+
+      Produtos: "/gestao/produtos",
+   };
+   public static Ajuda = '/ajuda';
 }

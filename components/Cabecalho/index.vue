@@ -53,7 +53,7 @@
               </v-list-item-title>
             </v-list-item>
   
-            <v-list-item :to="cadastroProdutos">
+            <v-list-item :to="gestaoProdutos">
               <v-icon>
                 <v-icon color="primary">mdi-shape-plus</v-icon>
               </v-icon>
@@ -90,15 +90,14 @@
   
   const drawer = ref(false);
   const group = ref(null);
-  
-  //const empresaService = useInjection(EmpresaService);
+
   const cadastroItens = Rotas.Cadastros.CadastroItens;
-  const cadastroProdutos = Rotas.Cadastros.CadastroProdutos;
+  const gestaoProdutos = Rotas.Gestao.Produtos;
   const Inicio = Rotas.Inicio;
   const Ajuda = Rotas.Ajuda;
   const RealizaOrcamento = Rotas.Cadastros.RealizaOrcamento;
   const Pedidos = Rotas.Cadastros.Pedidos;
-  
+  const router = useRouter();
   const nomePagina = computed(() => router.currentRoute.value.name);
   
   const sair = () => {

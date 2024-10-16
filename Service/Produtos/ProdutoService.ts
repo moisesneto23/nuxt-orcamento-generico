@@ -1,40 +1,43 @@
 
 
 import ProdutoDto from '@/Model/Produtos/ProdutoDto';
-import { AppHttpAxios } from '@/axios/AppHttpAxios';
-import { Inject } from 'typescript-ioc';
-import store from '@/store/index';
+import { AppHttpFetch, AppHttpUseFetch } from '~/plugins/http';
+import { storeGlobal } from '~/store/Global';
 
 export default class ProdutoService {
-    @Inject
-private $http!: AppHttpAxios;
-private idEmpresa = this.pegaIdEmpresa();
-private pegaIdEmpresa(): number{
-    let id = localStorage.getItem('businessId') || '0';
-    return parseInt(id);
-}
-
+   
+    private $http: AppHttpFetch;
+    private $httpUseFetch: AppHttpUseFetch;
+    private carregamento ;
+  constructor( ) {
+    this.$http =  new AppHttpFetch(); 
+    this.$httpUseFetch = new AppHttpUseFetch();
+    this.carregamento = storeGlobal();
+  }
 
     public async obterProdutosComItensCadastrados(): Promise<ProdutoDto[]> {
-        store.dispatch('ATIVAR_CARREGAMENTO');
-        const result = await this.$http.get(`Produto/${this.idEmpresa}/itens-cadastrados`);
-        store.dispatch('DESATIVAR_CARREGAMENTO');
+        this.carregamento.ativarLoad();
+        const result = await this.$http.get(`Produto/itens-cadastrados`);
+        this.carregamento.desativarLoad();
         return result.data; 
     }
 
     public async obterTodosProdutos(): Promise<ProdutoDto[]> {
-        const result = await this.$http.get(`Produto/${this.idEmpresa}`);
+        this.carregamento.ativarLoad();
+        const result = await this.$httpUseFetch.get(`Produto`);
+        this.carregamento.desativarLoad();
         return result.data;
     }
 
 
-    public async salvarProduto(produto: ProdutoDto): Promise<any> {
-        const result = await this.$http.post(`Produto/${this.idEmpresa}`, produto);
+    public async salvarProduto(produto: ProdutoDto): Promise<ProdutoDto[]> {
+        const result = await this.$http.post(`Produto`, produto);
+        return result;
     }
 
 
     public async editarProduto(produto: ProdutoDto): Promise<ProdutoDto> {
-        const result = await this.$http.patch(`Produto/${this.idEmpresa}`, produto);
+        const result = await this.$http.patch(`Produto`, produto);
         return result.data;
     }
 
@@ -44,7 +47,7 @@ private pegaIdEmpresa(): number{
     }
 
     public async obterTodosProdutosPorCategoria(idCategoria: number) {
-        const result = await this.$http.get(`Produto/${this.idEmpresa}/Categorias/${idCategoria}`);
+        const result = await this.$http.get(`Produto/Categorias/${idCategoria}`);
         return result.data;
       }
 };

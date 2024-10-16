@@ -1,4 +1,4 @@
-import { EdicaoItem } from './../.nuxt/components.d';
+
 import ItemDto from "~/Model/Itens/ItemDto";
 import ItemService from "~/Service/Itens/ItemService";
 
