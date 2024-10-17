@@ -1,11 +1,12 @@
 <template>
   <v-app id="app">
-    <div>
+    <header>
       <Cabecalho v-if="presisaDeToken"></Cabecalho>
       <CabecalhoVisitante v-else ></CabecalhoVisitante>
-    </div>
-   
-    <NuxtPage />
+    </header>
+    <main>
+      <NuxtPage />
+    </main>
   </v-app>
 </template>
 
@@ -29,10 +30,15 @@
 </script>
 
 <style scoped>
+main {
+  padding-top: 56px; /* Ajustar conforme a altura do seu v-app-bar */
+}
+
 #app {
   background: #F2F2F2;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   font-size: 12px;
+  padding: auto;
 }
 </style>
