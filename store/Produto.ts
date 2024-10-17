@@ -24,10 +24,6 @@ export const storeProdutos = defineStore('produtos', () => {
             produtos.value = produtos.value.filter((i)=> i.id !== dado.id );
             produtos.value.push(dado);
         }); 
-    }
-
-    
-    
-
+    } 
     return {produtos, adicionarProdutos, removerProduto, editarProduto };
 });

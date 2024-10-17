@@ -44,7 +44,6 @@
 <script setup lang="ts">
 import ProdutoDto from '@/Model/Produtos/ProdutoDto';
 import { CategoriaProdutoDto } from '~/Model/Produtos/CategoriaProdutoDto';
-import CategoriaProdutoService from '~/Service/Produtos/CategoriaProdutoService';
 import ProdutoService from '~/Service/Produtos/ProdutoService';
 import { storeCategoriaProdutos } from '~/store/CategoriaPrduto';
 import { storeGlobal } from '~/store/Global';
@@ -52,11 +51,6 @@ import { storeProdutos } from '~/store/Produto';
 
 const { desativarLoad, ativarLoad } = storeGlobal();
 const categoriasStore = storeCategoriaProdutos();
-ativarLoad();
-const serviceCategoriasProduto = new CategoriaProdutoService();
-const categoriasProduto = await serviceCategoriasProduto.obterTodasCategoriasProduto();
-categoriasStore.adicionarcategoriaProdutos(categoriasProduto);
-desativarLoad();
 
 const { adicionarProdutos } = storeProdutos();
 const {categoriaProdutos} =  storeToRefs(categoriasStore);

@@ -1,32 +1,37 @@
 <template>
   <div>
-    <v-tabs v-model="tab" class="mt-2" grow icons-and-text bg-color="primary" color="white">
+    <v-tabs v-model="tab" class="mt-2 bg-purple-darken-2"  grow icons-and-text density="compact"  color="green-lighten-1">
 
-      <v-tab :value="'tab-3'">
+      <v-tab value="one">
         Produtos
         <v-icon>mdi-shape-square-plus</v-icon>
       </v-tab>
 
-      <v-tab :value="'tab-1'">
+      <v-tab value="two">
         Categorias
         <v-icon>mdi-format-list-group-plus</v-icon>
       </v-tab>
     </v-tabs>
 
     <!-- Conteúdo dos tabs -->
-    <div v-if="tab === 'tab-3'">
+    <v-tabs-window v-model="tab">
+
+      <v-tabs-window-item value="one">
       <v-card-text>
         <ListagemProduto />
       </v-card-text>
       <CadastroProduto />
-    </div>
+    </v-tabs-window-item>
 
-    <div v-if="tab === 'tab-1'">
+    <v-tabs-window-item value="two">
       <v-card-text>
         <ListagemCategoriaProduto />
       </v-card-text>
       <CadastroCategoriaProduto />
-    </div>
+    </v-tabs-window-item>
+
+    </v-tabs-window>
+    
   </div>
 </template>
 
@@ -34,12 +39,16 @@
 import CategoriaProdutoService from '~/Service/Produtos/CategoriaProdutoService';
 
 
-// ativarLoad();
+const {ativarLoad, desativarLoad } = storeGlobal();
+onMounted( async () => {
+   ativarLoad();
 const serviceCategoriasProduto = new CategoriaProdutoService();
 const categoriasProdutoSSr = await serviceCategoriasProduto.obterTodasCategoriasProduto();
 const categoriasStore = storeCategoriaProdutos();
-categoriasStore.adicionarcategoriaProdutos(categoriasProdutoSSr);
-//desativarLoad();
+categoriasStore.adicionarCategoriaProdutos(categoriasProdutoSSr);
+desativarLoad();
+})
+
 // Estado da aba atual
-const tab = ref('tab-3');
+const tab = ref();
 </script>

@@ -7,18 +7,18 @@ export const storeCategoriaProdutos = defineStore('categoriaProdutos', () => {
     
     const categoriaProdutos = ref<CategoriaProdutoDto[]>([]);
 
-    const adicionarcategoriaProdutos = (dados: CategoriaProdutoDto[]) => {
+    const adicionarCategoriaProdutos = (dados: CategoriaProdutoDto[]) => {
         categoriaProdutos.value = dados;
     };
 
-    const removerItem = (id: number) => {
+    const removerCategoriaProdutos = (id: number) => {
         const serviceItem = new CategoriaProdutoService();
         serviceItem.delete(id).then(()=>{
             categoriaProdutos.value = categoriaProdutos.value.filter((i)=> i.id !== id );
         }); 
     }
 
-    const editarItem = (dado: CategoriaProdutoDto) =>{
+    const editarCategoriaProdutos = (dado: CategoriaProdutoDto) =>{
         const serviceItem = new CategoriaProdutoService();
         serviceItem.editarCategoriaProduto(dado).then(()=>{
             
@@ -30,5 +30,5 @@ export const storeCategoriaProdutos = defineStore('categoriaProdutos', () => {
     
     
 
-    return {categoriaProdutos, adicionarcategoriaProdutos, removerItem, editarItem };
+    return {categoriaProdutos, editarCategoriaProdutos, removerCategoriaProdutos, adicionarCategoriaProdutos };
 });

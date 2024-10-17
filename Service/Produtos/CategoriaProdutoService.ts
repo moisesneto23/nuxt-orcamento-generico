@@ -16,7 +16,7 @@ export default class CategoriaProdutoService {
   }
 
   public async obterTodasCategoriasProduto(): Promise<CategoriaProdutoDto[]> {
-    const result = await this.$httpUseFetch.get(`CategoriaProduto/`);
+    const result = await this.$http.get(`CategoriaProduto/`);
     return result;
 }
 

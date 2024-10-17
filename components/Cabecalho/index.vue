@@ -58,7 +58,7 @@
                 <v-icon color="primary">mdi-shape-plus</v-icon>
               </v-icon>
               <v-list-item-title>
-                <v-list-item-title class="text-primary">Cadastro Produtos</v-list-item-title>
+                <v-list-item-title class="text-primary">Gestão Produtos</v-list-item-title>
               </v-list-item-title>
             </v-list-item>
   
