@@ -41,6 +41,7 @@
   const email = ref('');
   const senha = ref('');
   const showPassword = ref(false);
+  const {ativarLoad, desativarLoad} = storeGlobal();
   
   
   const sericeEmpresa = new EmpresaService();
@@ -57,7 +58,7 @@
   };
   
   const fazerLogin = async () => {
-    //await authStore.ativarCarregamento();
+    ativarLoad();
     const login = new Login(email.value, senha.value);
     
     try {
@@ -70,7 +71,7 @@
     } catch (error) {
       console.error('Falha no login:', error);
     } finally {
-    //  await authStore.desativarCarregamento();
+    desativarLoad();
     }
   };
   </script>

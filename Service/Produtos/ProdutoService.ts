@@ -19,14 +19,12 @@ export default class ProdutoService {
         this.carregamento.ativarLoad();
         const result = await this.$http.get(`Produto/itens-cadastrados`);
         this.carregamento.desativarLoad();
-        return result.data; 
+        return result; 
     }
 
     public async obterTodosProdutos(): Promise<ProdutoDto[]> {
-        this.carregamento.ativarLoad();
         const result = await this.$httpUseFetch.get(`Produto`);
-        this.carregamento.desativarLoad();
-        return result.data;
+        return result;
     }
 
 
@@ -38,7 +36,7 @@ export default class ProdutoService {
 
     public async editarProduto(produto: ProdutoDto): Promise<ProdutoDto> {
         const result = await this.$http.patch(`Produto`, produto);
-        return result.data;
+        return result;
     }
 
     public async delete(id: any) : Promise<any>{

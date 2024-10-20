@@ -37,15 +37,24 @@
 
 <script setup lang="ts">
 import CategoriaProdutoService from '~/Service/Produtos/CategoriaProdutoService';
-
+import ProdutoService from '~/Service/Produtos/ProdutoService';
+definePageMeta({
+  middleware: 'auth'
+});
 
 const {ativarLoad, desativarLoad } = storeGlobal();
 onMounted( async () => {
    ativarLoad();
 const serviceCategoriasProduto = new CategoriaProdutoService();
-const categoriasProdutoSSr = await serviceCategoriasProduto.obterTodasCategoriasProduto();
+const serviceProduto = new ProdutoService();
 const categoriasStore = storeCategoriaProdutos();
+const produtoStore = storeProdutos();
+const categoriasProdutoSSr = await serviceCategoriasProduto.obterTodasCategoriasProduto();
+const dadosProduto = await serviceProduto.obterTodosProdutos();
+
+
 categoriasStore.adicionarCategoriaProdutos(categoriasProdutoSSr);
+produtoStore.adicionarProdutos(dadosProduto);
 desativarLoad();
 })
 

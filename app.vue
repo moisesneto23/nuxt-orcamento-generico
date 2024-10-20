@@ -5,6 +5,7 @@
       <CabecalhoVisitante v-else ></CabecalhoVisitante>
     </header>
     <main>
+      <Loading></Loading>
       <NuxtPage />
     </main>
   </v-app>
@@ -31,7 +32,7 @@
 
 <style scoped>
 main {
-  padding-top: 56px; /* Ajustar conforme a altura do seu v-app-bar */
+  padding-top: 58px; /* Ajustar conforme a altura do seu v-app-bar */
 }
 
 #app {

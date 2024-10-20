@@ -80,7 +80,6 @@ async function salvarproduto() {
       cat.descricao = select.value
     
     produto.value.categoriaProduto = cat;
-    console.log(produto);
   }
 
   try {
